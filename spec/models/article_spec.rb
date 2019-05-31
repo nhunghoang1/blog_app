@@ -16,7 +16,7 @@ RSpec.describe Article, type: :model do
     end
 
     describe '#comments' do
-      let(:article) { Article.create(title: 'hello world') }
+      let(:article) { FactoryBot.create(:article) }
 
       it 'will respond to .comments' do
         expect(article).to respond_to(:comments)
@@ -25,7 +25,7 @@ RSpec.describe Article, type: :model do
       context 'when delete an article' do
         before do
           5.times do |i|
-            Comment.create(article:article)
+            FactoryBot.create(:comment, article: article)
           end
         end
 

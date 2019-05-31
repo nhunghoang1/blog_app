@@ -46,13 +46,13 @@ RSpec.describe "Article", type: :request do
     end
 
     it 'GET /articles/1/edit' do
-      article = Article.create(title: 'hello hello')
+      article = FactoryBot.create(:article)
       get edit_article_path(article)
       expect(response).to have_http_status(200)
     end
 
     context 'PATCH /articles/1' do
-      let(:article) { Article.create(title: 'Hello') }
+      let(:article) {FactoryBot.create(:article) }
   
         it "returns a valid response" do
           patch article_path(article.to_param, article: { title: 'Hellllllllo' } )
@@ -65,7 +65,7 @@ RSpec.describe "Article", type: :request do
     end
 
     it 'DELETE /articles/1' do
-      article = Article.create(title: 'hello nhung')
+      article = FactoryBot.create(:article)
       delete article_path(article.to_param)
       expect(response).to have_http_status(302)
       expect(response).to redirect_to(articles_path)
