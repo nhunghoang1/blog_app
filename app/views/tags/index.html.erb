@@ -1,0 +1,15 @@
+<h1>Listing tags</h1>
+<table>
+  <%= link_to 'New tag', new_tag_path %>
+  <tr>
+    <th>Name:</th>
+
+    <% @tag.each do |tag| %>
+      <tr>
+        <td><%= tag.name %>
+      </tr>
+    <% end %>
+  </tr>
+</table>
+
+<%= link_to 'Back', articles_path %>

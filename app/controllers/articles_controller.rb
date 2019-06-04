@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
+    if params[:tag]
+      @article = Article.tagged_with(params[:tag]) 
+    else
     @article = Article.all
+    end
   end
 
   def show 
@@ -20,7 +24,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.create(article_params)
-   
+    abort
     if @article.save
       redirect_to @article
     else
@@ -47,7 +51,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :text, { tag_ids: [] })
   end
 
 end

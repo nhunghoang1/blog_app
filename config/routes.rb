@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   
   get 'welcome/index'
 
+  get 'tags/:tag', to: 'articles#index', as: :tag
+
+    resources :tags 
+
     resources :articles do
       resources :comments
     end
 
 
-  root 'welcome#index'
+  root 'articles#index'
 end

@@ -25,6 +25,11 @@
   </p>
 
   <p>
+    <%= form.label :tag %>
+    <%= form.select :tags_id, Tag.all.collect { |t| [t.name, t.id] }, { :prompt => "Please select"}, { multiple: true } %>
+  </p>
+
+  <p>
     <%= form.submit %>
   </p>
 <% end %>
