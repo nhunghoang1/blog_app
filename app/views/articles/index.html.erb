@@ -1,37 +1,38 @@
 <h1>Listing articles</h1>
 
+<%= link_to 'New article', new_article_path %>
+
 <div id="tag_cloud">
   <% tag_cloud Article.tag_counts, %w[s m l] do |tag, css_class| %>
     <%= link_to tag.name, tag_path(tag.name), class: css_class %>
   <% end %>
 </div>
 
-<table>
-  <%= link_to 'New article', new_article_path %>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
-
-  <% @article.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= raw article.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article), method: :delete, data: {confirm: "Are you sure?"} %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-    </tr>
-  <% end %>
-</table>
-
+<section class="section">
+  <div class="container">
+    <% @article.each do |article| %>
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4"><%= link_to article.title, article %></p>
+            </div>
+          </div>
+          <div class="content">
+            <%= article.text %>
+          </div>
+          <div class="content">
+            <p><small>Tags: <%= raw article.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
+          </div>
+          <div class="comment-count">
+            <span class="tag is-rounded">
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>  
+  </section>
+  
 <%= link_to 'Back', welcome_index_path %>
 
-<script>
-  $(document).on('ready page:load', function () {
-    $('#post_tag_ids').chosen({
-      allow_single_deselect: true,
-      width: '100%'
-    })
-  })
-</script>

@@ -26,6 +26,12 @@
     </div>
   </div>
 
+  <div class="field">
+    <div class="control">
+      <%= f.input :tag_list, as: :select, collection: Tag.order(:name), label_method: :name, input_html: { class: 'textarea', multiple: true }, wrapper: false %>
+    </div>
+  </div>
+
   <%= f.button :submit, 'Create', class: 'button' %>
   <% end %>
 </div>

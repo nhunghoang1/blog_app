@@ -12,6 +12,9 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+gem 'bulma-rails', '~> 0.7.5'
+
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -56,7 +59,9 @@ group :development do
   #Guard is a command line tool to easily handle events on file system modifications.
   gem 'guard', '~> 2.15'
     #Guard is a command line tool to easily handle events on file system modifications.
-  gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
+  gem 'guard-livereload', '~> 2.5', '>= 2.5.2', require: false
+  # Make errors better lookings
+gem 'better_errors', '~> 2.5', '>= 2.5.1'
 end
 
 group :test do
@@ -72,11 +77,12 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails-controller-testing'
 
-# Bulma CSS
-gem 'bulma-rails', '~> 0.7.5'
-
 # Make errors better lookings
 gem 'better_errors', '~> 2.5', '>= 2.5.1'
 
 # Simple form
 gem 'simple_form', '~> 4.1'
+
+# Jquery
+gem 'jquery-rails'
+

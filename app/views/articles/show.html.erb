@@ -1,18 +1,18 @@
-<p>
-  <strong>Author:</strong>
-  <%= @article.user.email %>
-</p>
+<section class="section">
+  <div class="container">
+    <div class="user">
+      <%= @article.user.email %>
+    </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+    <div class="title">
+      <%= @article.title %>
+    </div>
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
-
+    <div class="content">
+      <%= @article.text %>
+    </div>
+  </div>
+  
 <h2>Comments:</h2>
 <%= render @article.comments %>
 
@@ -20,9 +20,7 @@
 <%= render 'comments/form' %>
 
 <h2>Tags:</h2>
-<%= @article.tags.name %>
-<%#= raw @article.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
-
+<%= @article.tag_list %>
 
 <%= link_to 'Edit', edit_article_path(@article) %>
 <%= link_to 'Destroy', article_path(@article), method: :delete,
