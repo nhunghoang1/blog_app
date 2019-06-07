@@ -20,7 +20,8 @@
 <%= render 'comments/form' %>
 
 <h2>Tags:</h2>
-<%= raw @article.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+<%= @article.tags.name %>
+<%#= raw @article.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
 
 
 <%= link_to 'Edit', edit_article_path(@article) %>

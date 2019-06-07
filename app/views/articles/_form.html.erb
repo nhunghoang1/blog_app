@@ -1,35 +1,31 @@
-<%= form_with model: @article, local: true do |form| %>
-  <% if @article.errors.any? %>
-    <div id="error explaination">
-      <h2>
-        <%= pluralize(@article.errors.count, "error") %>
-        prohibited this article from being saved:
-      </h2>
+<div class="section">
+  <%= simple_form_for @article do |f| %>
+    <% if @article.errors.any? %>
+      <div id="error explaination">
+        <h2>
+          <%= pluralize(@article.errors.count, "error") %>
+          prohibited this article from being saved:
+        </h2>
 
-      <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="field">
+    <div class="control">
+     <%= f.input :title, input_html: { class: 'input' }, wrapper: false, label_html: { class: 'label' } %>
     </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.input :text, input_html: { class: 'textarea' }, wrapper: false, label_html: { class: 'label' } %>
+    </div>
+  </div>
+
+  <%= f.button :submit, 'Create', class: 'button' %>
   <% end %>
-
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
-
-  <p>
-    <%= form.label :text %>
-    <%= form.text_area :text %>
-  </p>
-
-  <p>
-    <%= form.label :tag %>
-    <%= form.select :tags_id, Tag.all.collect { |t| [t.name, t.id] }, { :prompt => "Please select"}, { multiple: true } %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+</div>

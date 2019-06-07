@@ -6,12 +6,13 @@ class ArticlesController < ApplicationController
     if params[:tag]
       @article = Article.tagged_with(params[:tag]) 
     else
-    @article = Article.all
+      @article = Article.all
     end
   end
 
   def show 
     @article = Article.find(params[:id])
+    @tag = @article.tags
   end
 
   def new
@@ -24,7 +25,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.create(article_params)
-    abort
     if @article.save
       redirect_to @article
     else
