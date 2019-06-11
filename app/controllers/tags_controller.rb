@@ -16,6 +16,9 @@ class TagsController < ApplicationController
   end
 
   def create
+    ## Look up tag by name (case insensitive) and if it exists, don't create a new one.
+    # Use validations to do that in your Tag model
+
     @tag = Tag.create(tag_params)
     if 
       @tag.save

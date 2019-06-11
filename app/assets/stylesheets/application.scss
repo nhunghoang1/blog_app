@@ -11,4 +11,15 @@
  * It is generally better to create a new file per style scope.
  *
  */
- @import 'bulma';
+ @import 'bootstrap.min';
+ @import 'bootstrap-grid.min';
+ @import 'bootstrap-reboot.min';
+ @import 'clean-blog';
+
+ // Move below stuff to comments.scss
+ .comment {
+   max-width: 500px;
+   border: solid 1px #AAA;
+   padding: 2rem;
+   border-radius: 1rem;
+ }

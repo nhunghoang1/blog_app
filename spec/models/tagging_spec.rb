@@ -1,5 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Tagging, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#tag' do
+    let(:tagging) { Tagging.create }
+
+    it 'will respond to .tag' do
+      expect(tagging).to respond_to(:tag)
+    end
+  end
+
+  describe '#article' do
+    let(:tagging) { Tagging.create }
+
+    it 'will respond to .article' do
+      expect(tagging).to respond_to(:article)
+    end
+  end
 end

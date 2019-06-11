@@ -32,4 +32,12 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'User validation' do
+    context 'when an email is not present' do
+      it 'will not save the user' do
+        expect(User.create(email: nil).errors.messages[:email]).to include("can't be blank")
+      end
+    end
+  end
 end

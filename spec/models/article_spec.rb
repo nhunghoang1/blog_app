@@ -36,5 +36,63 @@ RSpec.describe Article, type: :model do
         end
       end
     end
+
+    describe '#picture' do
+      let(:article) { FactoryBot.create(:article) }
+
+      it 'will respond to .picture' do
+        expect(article).to respond_to(:picture)
+      end
+    end
+
+    describe '#user' do
+      let(:article) { FactoryBot.create(:article) }
+
+      it 'will respond to .user' do
+        expect(article).to respond_to(:user)
+      end
+    end
+
+    describe '#tags' do
+      let(:article) { FactoryBot.create(:article) }
+
+      it 'will respond to .tags' do
+        expect(article).to respond_to(:tags)
+      end
+    end
+
+    describe '#taggings' do
+    let(:article) { FactoryBot.create(:article) }
+
+      it 'will respond to .taggings' do
+        expect(article).to respond_to(:taggings)
+      end
+    end
+
+    describe '#tag_list' do
+    let(:article) { FactoryBot.create(:article) }
+    let(:tag1) { Tag.create(name: 'music') }
+    let(:tag2) { Tag.create(name: 'ruby') }
+
+      it 'will show the tag list' do
+        article.tag_list = [tag1, tag2]
+        article.tag_list.save
+    
+        expect(article.tag_list).to eq("music, ruby")
+      end
+    end
+
+    describe '#tagged_with' do
+      let(:article) { FactoryBot.create(:article) }
+      let(:tag) { Tag.create(name: 'music') }
+      it 'will show the tags that associated with the article' do
+        article.tags.save
+        expect(article.tags).to eq('music')
+      end
+    end
+
+    describe '#tag_counts' do
+      it 'will'
+    end
   end
 end

@@ -1,29 +1,50 @@
-<section class="section">
+<header class="masthead" style="background-image: url('<%= asset_url('about-bg.jpg') %>')">
+  <div class="overlay"></div>
   <div class="container">
-    <div class="user">
-      <%= @article.user.email %>
-    </div>
-
-    <div class="title">
-      <%= @article.title %>
-    </div>
-
-    <div class="content">
-      <%= @article.text %>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1><%= @article.title %></h1>
+          <span class="meta">Posted by
+            <%= @article.user.email %>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
-  
-<h2>Comments:</h2>
-<%= render @article.comments %>
+</header>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+          <div class="post-subtitle">
+            <h3><%= @article.text %></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
 
-<h2>Tags:</h2>
-<%= @article.tag_list %>
+<div class="container">
+  <h2>Tags:</h2>
+  <%= @article.tag_list %>
+</div>
 
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= link_to 'Destroy', article_path(@article), method: :delete,
-                                    data: { confirm: "Are you sure?" } %>
-                                    
-<%= link_to 'Back', articles_path %>
+<div class="container">  
+  <h2>Comments:</h2>
+  <%= render @article.comments %>
+
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
+
+  <%= image_tag(@article.picture_url, :width => 600) if @article.picture.present? %>
+
+  <%= link_to 'Edit', edit_article_path(@article) %>
+  <%= link_to 'Destroy', article_path(@article), method: :delete,
+                                      data: { confirm: "Are you sure?" } %>
+                                      
+  <%= link_to 'Back', articles_path %>
+</div>
